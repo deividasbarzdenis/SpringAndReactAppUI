@@ -1,31 +1,33 @@
-
 const Input = (props) => {
+    let inputClassName = 'form-control';
 
-    let inputClassname = 'form-control';
+    if (props.type === 'file') {
+        inputClassName += '-file';
+    }
 
-    if (props.hasError !== undefined){
-        inputClassname += props.hasError ? ' is-invalid' : ' is-valid';
+    if (props.hasError !== undefined) {
+        inputClassName += props.hasError ? ' is-invalid' : ' is-valid';
     }
 
     return (
         <div>
             {props.label && <label>{props.label}</label>}
             <input
-                className={inputClassname}
-                type={props.type || "text"}
+                className={inputClassName}
+                type={props.type || 'text'}
                 placeholder={props.placeholder}
                 value={props.value}
                 onChange={props.onChange}
             />
-            {props.hasError && <span className="invalid-feedback">{props.error}</span>}
+            {props.hasError && (
+                <span className="invalid-feedback">{props.error}</span>
+            )}
         </div>
     );
-}
+};
 
 Input.defaultProps = {
-    onChange: () => {
-
-    }
-}
+    onChange: () => {}
+};
 
 export default Input;
