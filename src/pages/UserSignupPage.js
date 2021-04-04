@@ -1,5 +1,12 @@
 import React from 'react';
-import Input from '../components/input';
+import InputForLoginAndSignUp from '../components/InputForLoginAndSignUp';
+import ButtonWithProgressLoginSignup from '../components/ButtonWithProgressLoginSignup';
+import { connect } from 'react-redux';
+import * as authActions from '../redux/authActions';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import image from '../assets/2asd.png';
 
 export class UserSignupPage extends React.Component {
     state = {
@@ -207,4 +214,12 @@ UserSignupPage.defaultProps = {
     }
 };
 
-export default UserSignupPage;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: {
+            postSignup: (user) => dispatch(authActions.signupHandler(user))
+        }
+    };
+};
+
+export default connect(null, mapDispatchToProps) (UserSignupPage);

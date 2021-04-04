@@ -6,7 +6,7 @@ import * as apiCalls from './api/apiCalls';
 import LoginPage from "./pages/LoginPage";
 
 const actions = {
-    postSignup: apiCalls.signup
+    postLogin: apiCalls.login
 }
 
 ReactDOM.render(

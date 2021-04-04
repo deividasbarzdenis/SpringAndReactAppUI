@@ -1,9 +1,10 @@
 import React from 'react';
-import {  render,
+import {
+    render,
     fireEvent,
     waitForDomChange,
-    waitForElement } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+    waitForElement
+} from '@testing-library/react';
 import { UserSignupPage } from './UserSignupPage';
 
 describe('UserSignupPage', () => {
