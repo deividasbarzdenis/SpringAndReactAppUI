@@ -213,6 +213,23 @@ describe('LoginPage', () => {
             expect(spinner).not.toBeInTheDocument();
         });
 
+        it('redirects to homePage after successful login', async () => {
+            const actions = {
+                postLogin: jest.fn().mockResolvedValue({})
+            };
+            const history = {
+                push: jest.fn()
+            };
+
+            setupForSubmit({ actions, history });
+            fireEvent.click(button);
+
+            await waitForDomChange();
+
+            expect(history.push).toHaveBeenCalledWith("/");
+        });
+
+
     });
 });
 console.error = () => {};

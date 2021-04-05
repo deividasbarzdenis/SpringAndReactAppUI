@@ -341,7 +341,7 @@ describe('UserSignupPage', () => {
             expect(errorMessage).not.toBeInTheDocument();
         });
 
-        it('redirect to homePage after succesful signup', async () => {
+        it('redirect to homePage after successful signup', async () => {
             const actions = {
                 postSignup: jest.fn().mockResolvedValue({})
             };

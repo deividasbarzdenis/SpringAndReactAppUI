@@ -2,14 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import * as apiCalls from './api/apiCalls';
 import { HashRouter } from 'react-router-dom';
 import App from "./containers/App";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-const actions = {
-    postLogin: apiCalls.login
-}
 
 ReactDOM.render(
   <React.StrictMode>
