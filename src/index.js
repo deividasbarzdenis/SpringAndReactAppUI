@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import * as apiCalls from './api/apiCalls';
-import LoginPage from "./pages/LoginPage";
+import { HashRouter } from 'react-router-dom';
+import App from "./containers/App";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const actions = {
     postLogin: apiCalls.login
@@ -11,7 +13,9 @@ const actions = {
 
 ReactDOM.render(
   <React.StrictMode>
-      <LoginPage actions = {actions}/>
+     <HashRouter>
+         <App />
+     </HashRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
