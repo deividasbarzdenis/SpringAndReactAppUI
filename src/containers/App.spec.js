@@ -36,7 +36,7 @@ describe('App', () => {
     it('display UserSignupPage when url is /signup', () => {
         const {container} = setup('/signup');
         const header = container.querySelector('h1');
-        expect(header).toHaveTextContent('Sing Up');
+        expect(header).toHaveTextContent('Sign Up');
     });
     it('displays userpage when url than /, /login or /signup', () => {
         const {queryByTestId} = setup('/user1');

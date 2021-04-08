@@ -73,7 +73,7 @@ export class UserSignupPage extends React.Component {
     render() {
         return (
             <div className="container">
-                <h1 className="text-center">Sing Up</h1>
+                <h1 className="text-center">Sign Up</h1>
                 <div className="col-12 mb-3">
                     <Input
                         label="Display Name"

@@ -4,6 +4,15 @@ import {Link} from 'react-router-dom';
 import {connect} from "react-redux";
 
 class TopBar extends Component {
+    onClickLogout = () => {
+//define redux action
+       const action = {
+           type: 'logout success'
+       }
+       //need to dispatch action, redux calls reducers functions
+        this.props.dispatch(action);
+    }
+
     render() {
         let links = (
             <ul className="nav navbar-nav ml-auto">
@@ -22,7 +31,10 @@ class TopBar extends Component {
         if (this.props.user.isLoggedIn) {
             links = (
                 <ul className="nav navbar-nav ml-auto">
-                    <li className="nav-item nav-link">Logout</li>
+                    <li className="nav-item nav-link" onClick={this.onClickLogout} style={{
+                        cursor: "pointer"
+                    }}>Logout
+                    </li>
                     <li className="nav-item">
                         <Link to={`/${this.props.user.username}`} className="nav-link">
                             My Profile

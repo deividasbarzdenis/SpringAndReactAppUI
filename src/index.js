@@ -5,8 +5,9 @@ import reportWebVitals from './reportWebVitals';
 import {HashRouter} from 'react-router-dom';
 import App from "./containers/App";
 import {Provider} from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import authReducer from "./redux/authReducer";
+import logger from 'redux-logger';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const loggedInState = {
@@ -18,7 +19,7 @@ const loggedInState = {
     isLoggedIn: true,
 };
 
-const store = createStore(authReducer, loggedInState);
+const store = createStore(authReducer, loggedInState, applyMiddleware(logger));
 
 ReactDOM.render(
     <React.StrictMode>
