@@ -10,16 +10,7 @@ import authReducer from "./redux/authReducer";
 import logger from 'redux-logger';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const loggedInState = {
-    id: 1,
-    username: 'user1',
-    displayName: 'display1',
-    image: 'profile1.png',
-    password: 'P4ssword',
-    isLoggedIn: true,
-};
-
-const store = createStore(authReducer, loggedInState, applyMiddleware(logger));
+const store = createStore(authReducer, applyMiddleware(logger));
 
 ReactDOM.render(
     <React.StrictMode>

@@ -42,7 +42,7 @@ describe('LoginPage', () => {
         };
 
         const setupForSubmit = (props) => {
-            const rendered = render(<LoginPage {...props}/>)
+            const rendered = render(<LoginPage {...props}/>);
             const {container, queryByPlaceholderText} = rendered;
             usernameInput = queryByPlaceholderText('Your username');
             fireEvent.change(usernameInput, changeEvent('my-user-name'));
