@@ -1,9 +1,10 @@
 import {Route, Switch} from 'react-router-dom';
 import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
+
 import {UserSignupPage} from "../pages/UserSignupPage";
 import UserPage from "../pages/UserPage";
 import TopBar from "../components/TopBar";
+import {LoginPage} from "../pages/LoginPage";
 
 
 function App() {
