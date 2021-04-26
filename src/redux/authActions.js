@@ -54,6 +54,7 @@ export const loginHandlerFacebook = (credential) => {
 export const signupHandler = (user) => {
     return function (dispatch) {
         return apiCalls.signup(user).then((response) => {
+            //handling login
             return dispatch(loginHandler(user));
         });
     };

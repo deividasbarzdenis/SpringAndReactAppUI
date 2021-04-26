@@ -2,6 +2,8 @@ import React from 'react';
 import Input from "../components/input";
 import ButtonWithProgress from "../components/ButtonWithProgress";
 import {connect} from 'react-redux';
+import * as authActions from "../redux/authActions";
+
 
 export class UserSignupPage extends React.Component {
     state = {
@@ -57,53 +59,18 @@ export class UserSignupPage extends React.Component {
 
         this.props.actions.postSignup(user)
             .then((response) => {
-                const body = {
-                    username: this.state.username,
-                    password: this.state.password,
-                }
-                this.setState({pendingApiCall: true})
-                this.props.actions.postLogin(body)
-                    .then(response => {
-                        const action = {
-                            type: 'login-success',
-                            payload: {
-                                //papildomas actionas kuris perduodamas i redux, galime nuspresti patys ka paduodame
-                                /*       id: response.data.id,
-                                       username: response.data.username,
-                                       displayName: response.data.displayName,
-                                       image: response.data.image*/
-                                //arba galime naudoti javascript spread operator , kad pakeisti laukus esancius virsuje
-                                ...response.data,
-                                //password is disabled in back-end, so we getting it in from state
-                                password: this.state.password
-                            }
-                        }
-                        this.props.dispatch(action);// rekia update authReducer
-                        this.setState({pendingApiCall: false}, () => {
-                            this.props.history.push('/');
-                        })
-                    })
-                    .catch(error => {
-                        if (error.response) {
-                            this.setState({
-                                apiError: error.response.data.message,
-                                pendingApiCall: false,
-                            })
-                        }
-                    });
-                /*       this.setState({pendingApiCall: false}, () =>
-                           this.props.history.push('/')
-                       );*/
+                this.setState({pendingApiCall: false}, () =>
+                    this.props.history.push('/')
+                );
             })
-            .catch((apiError) => {
-
+            .catch(apiError => {
                 let errors = {...this.state.errors};
                 if (apiError.response.data && apiError.response.data.validationErrors) {
                     errors = {...apiError.response.data.validationErrors};
                 }
                 this.setState({pendingApiCall: false, errors});
             });
-    };
+    }
 
     render() {
         return (
@@ -177,6 +144,13 @@ UserSignupPage.defaultProps = {
         }
     }
 };
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: {
+            postSignup: (user) => dispatch(authActions.signupHandler(user))
+        }
+    }
+}
 
-export default connect()(UserSignupPage);
+export default connect(null, mapDispatchToProps)(UserSignupPage);
 
